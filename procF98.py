@@ -1,45 +1,47 @@
-try:
-    f = open("fort.98")
+if __name__ == "__main__":
 
-except IOError: print("file fort.98 does not exist")
+    try:
+        f = open("fort.98")
 
-else:
-    out = []
-    for i in range(4):
-        line = f.readline()
+    except IOError: print("file fort.98 does not exist")
 
-    while True:
-        line1 = f.readline()
-        line2 = f.readline()
-        line3 = f.readline()
-        line4 = f.readline()
+    else:
+        out = []
+        for i in range(4):
+            line = f.readline()
 
-        if not line1:
-            break
+        while True:
+            line1 = f.readline()
+            line2 = f.readline()
+            line3 = f.readline()
+            line4 = f.readline()
 
-        list1 = line1.split("-")
-        Z = list1[0]
+            if not line1:
+                break
 
-        list2 = line2.split(" ")
-        while list2.count("") > 0:
-            list2.remove("")
-        list2.pop(0)
-        list2[len(list2)-1] = list2[len(list2)-1].rsplit("\n")[0]
+            list1 = line1.split("-")
+            Z = list1[0]
 
-        list3 = line3.split(" ")
-        while list3.count("") > 0:
-            list3.remove("")
-        list3.pop(0)
-        list3[len(list3)-1] = list3[len(list3)-1].rsplit("\n")[0]
+            list2 = line2.split(" ")
+            while list2.count("") > 0:
+                list2.remove("")
+            list2.pop(0)
+            list2[len(list2)-1] = list2[len(list2)-1].rsplit("\n")[0]
 
-        for i in range(0, len(list2)):
-            out.append(Z + "\t" + list2[i] + "\t" + list3[i])
+            list3 = line3.split(" ")
+            while list3.count("") > 0:
+                list3.remove("")
+            list3.pop(0)
+            list3[len(list3)-1] = list3[len(list3)-1].rsplit("\n")[0]
 
-        tmp1 = out[-1].split("\t")[0]
+            for i in range(0, len(list2)):
+                out.append(Z + "\t" + list2[i] + "\t" + list3[i])
 
-    for i in out[::-1]:
-        tmp0 = i.split("\t")[0]
-        if tmp0 != tmp1: print("")
-        print(i)
-        tmp1 = tmp0
+            tmp1 = out[-1].split("\t")[0]
+
+        for i in out[::-1]:
+            tmp0 = i.split("\t")[0]
+            if tmp0 != tmp1: print("")
+            print(i)
+            tmp1 = tmp0
 
